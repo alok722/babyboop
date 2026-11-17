@@ -14,7 +14,7 @@ done
 iconutil -c icns "$SET" -o apps/macos/Resources/AppIcon.icns
 
 for s in 16 32 48 256; do sips -z $s $s "$TMP/icon_1024.png" --out "$TMP/ico_$s.png" >/dev/null; done
-mkdir -p apps/windows/BabyBoop/Assets
+mkdir -p apps/windows/BabyBoop/Assets apps/windows-rs/assets
 python3 -I - "$TMP" apps/windows/BabyBoop/Assets/AppIcon.ico <<'EOF'
 import struct, sys
 tmp, out = sys.argv[1], sys.argv[2]
@@ -28,6 +28,7 @@ for s, data in zip(sizes, pngs):
     offset += len(data)
 open(out, "wb").write(head + entries + b"".join(pngs))
 EOF
+cp apps/windows/BabyBoop/Assets/AppIcon.ico apps/windows-rs/assets/AppIcon.ico
 
 mkdir -p site/assets
 sips -z 512 512 "$TMP/icon_1024.png" --out site/assets/icon-512.png >/dev/null

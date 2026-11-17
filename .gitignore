@@ -10,3 +10,5 @@ apps/windows/publish/
 
 # per-person Claude Code settings; .claude/launch.json is shared
 .claude/settings.local.json
+apps/windows-rs/target/
+apps/windows-rs/out/
