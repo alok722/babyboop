@@ -13,7 +13,7 @@ $versionArgs = @()
 if ($Version) { $versionArgs = @("-p:Version=$Version") }
 
 dotnet publish (Join-Path $PSScriptRoot "BabyBoop/BabyBoop.csproj") -c Release -r $Rid --self-contained `
-    -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true @versionArgs -o $publish
+    -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true @versionArgs -o $publish
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 New-Item -ItemType Directory -Force $out | Out-Null
