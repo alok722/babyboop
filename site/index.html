@@ -2,73 +2,233 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BabyBoop</title>
-<meta name="description" content="A free toddler keyboard game for Mac and Windows. Every key makes an emoji, a sound and confetti, while the computer stays locked.">
+<meta name="description" content="A free, open-source toddler keyboard game for Mac and Windows. Every key makes an emoji, a happy tone and confetti, while the computer stays locked.">
+<meta property="og:title" content="BabyBoop">
+<meta property="og:description" content="Let your toddler bash the keyboard. Every key makes an emoji and a happy tone, and the computer stays locked.">
+<meta property="og:image" content="assets/icon-512.png">
+<meta name="theme-color" content="#f5f7fb">
 <link rel="icon" href="assets/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css">
 <script type="module" src="main.js"></script>
 </head>
 <body>
-<header class="hero">
-  <img class="logo" src="assets/icon-512.png" alt="" width="128" height="128">
-  <h1>BabyBoop</h1>
-  <p class="tagline">Every key, click and tap makes a big smiley, a happy sound and a burst of confetti, while your computer stays safely locked.</p>
 
-  <div id="primary" class="cta">
-    <a id="download" class="button" href="#downloads">Download</a>
-    <p id="note" class="note">Free and open source. No account, no ads, no tracking.</p>
+<nav class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="#"><img src="assets/icon-512.png" alt="" width="32" height="32"> BabyBoop</a>
+    <div class="top-links">
+      <a href="#web-or-app">Web or app</a>
+      <a href="#setup">Setup</a>
+      <a href="#downloads">Downloads</a>
+      <a class="gh" data-repo href="https://github.com/alok722/babyboop">GitHub</a>
+    </div>
   </div>
+</nav>
 
-  <div id="unsupported" class="cta" hidden>
-    <p class="note">BabyBoop runs on Mac and Windows computers. On this device you can still play in the browser, but keys and gestures can't be fully locked.</p>
-    <a class="button" href="play/">🎈 Play in browser</a>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Free · open source · Mac &amp; Windows</p>
+      <h1>Let them bash the keyboard.</h1>
+      <p class="lede">Every key, click and tap makes a big emoji, a happy tone and a burst of confetti. The computer stays locked, so little hands can't close your work or wander into your email.</p>
+      <div class="cta-row">
+        <a id="download" class="btn btn-primary" href="#downloads">Download</a>
+        <a id="try" class="btn btn-ghost" href="play/">Try it in your browser</a>
+      </div>
+      <p id="platform-note" class="small">No account, no ads, no tracking. Works offline.</p>
+    </div>
+
+    <div class="stage-wrap">
+      <div id="stage" class="stage" aria-label="Demo: press any letter key or tap a key below">
+        <p class="stage-hint" id="stage-hint">Press any letter</p>
+      </div>
+      <div class="keys" role="group" aria-label="Demo keys">
+        <button class="key" data-k="B">B</button>
+        <button class="key" data-k="A">A</button>
+        <button class="key" data-k="B">B</button>
+        <button class="key" data-k="Y">Y</button>
+        <button class="key" data-k="O">O</button>
+        <button class="key" data-k="O">O</button>
+        <button class="key" data-k="P">P</button>
+      </div>
+      <p class="small center">The same letter always brings the same friend: A is an apple 🍎, B a bear 🐻.</p>
+    </div>
   </div>
 </header>
 
 <main>
-  <section class="features">
-    <div><span>🍎</span><h3>Same key, same friend</h3><p>A is always an apple, B a bear. Digits show stars.</p></div>
-    <div><span>🔒</span><h3>Stays locked</h3><p>System keys and gestures are swallowed so little hands can't wander off.</p></div>
-    <div><span>🌙</span><h3>Calm mode</h3><p>Softer sounds, slower animations, fewer things on screen.</p></div>
-    <div><span>🎶</span><h3>Gentle music</h3><p>Quiet nursery melodies and surprise pops when things go quiet.</p></div>
+
+  <section class="band">
+    <div class="wrap features">
+      <div class="feature">
+        <h3>Same key, same friend</h3>
+        <p>Each letter has its own emoji, so toddlers start to learn which key does what. Numbers make stars.</p>
+      </div>
+      <div class="feature">
+        <h3>Really locked</h3>
+        <p>⌘Tab, the Windows key, Mission Control, swipes and the Dock are all swallowed while the game runs.</p>
+      </div>
+      <div class="feature">
+        <h3>Calm mode</h3>
+        <p>Softer sounds, slower animations and fewer things on screen for wind-down time.</p>
+      </div>
+      <div class="feature">
+        <h3>Gentle tones</h3>
+        <p>Each press plays a note. Quiet nursery melodies drift in when the keyboard goes quiet.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="steps-mac" class="steps" hidden>
-    <h2>First run on a Mac</h2>
-    <ol>
-      <li><b>Open the download</b> and drag BabyBoop into Applications.<div class="shot">Screenshot: DMG window</div></li>
-      <li><b>Open BabyBoop.</b> macOS says "Apple could not verify BabyBoop". Click <b>Done</b>, then go to <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b>. BabyBoop isn't signed with a paid Apple certificate, so this is expected.<div class="shot">Screenshot: Open Anyway button</div></li>
-      <li><b>Allow Accessibility.</b> Click <b>Open Accessibility settings</b> in BabyBoop and turn BabyBoop on. This is what lets it keep little fingers inside the app.<div class="shot">Screenshot: Accessibility list</div></li>
-      <li><b>Press Start</b> and hand over the keyboard.</li>
-      <li><b>To exit,</b> hold <kbd>⌥ Option</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> for 2 seconds, or hold <kbd>Esc</kbd> for 5 seconds.</li>
-    </ol>
-    <p class="note">After updating BabyBoop, remove it from the Accessibility list with − and add it again with +.</p>
+  <section id="web-or-app" class="section">
+    <div class="wrap">
+      <h2>Browser or app?</h2>
+      <p class="section-lede">The browser version is the quickest way to see what BabyBoop does. For a toddler at the keyboard, use the app: a browser isn't allowed to block system keys, so one lucky swipe and they're out.</p>
+
+      <div class="compare-scroll">
+        <table class="compare">
+          <thead>
+            <tr><th scope="col"></th><th scope="col">In the browser</th><th scope="col" class="app-col">Mac or Windows app</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Install</th><td>None, just open the page</td><td class="app-col">One download, about a minute</td></tr>
+            <tr><th scope="row">⌘Tab / Alt+Tab, Windows key</th><td class="no">Leave the game</td><td class="app-col yes">Blocked</td></tr>
+            <tr><th scope="row">⌘Q, ⌘W, closing the tab</th><td class="no">Close the game</td><td class="app-col yes">Blocked</td></tr>
+            <tr><th scope="row">Trackpad swipes, Mission Control, Dock</th><td class="no">Work as usual</td><td class="app-col yes">Blocked</td></tr>
+            <tr><th scope="row">Full screen over everything</th><td class="no">Esc leaves full screen</td><td class="app-col yes">Yes, until a grown-up exits</td></tr>
+            <tr><th scope="row">How to exit</th><td>Anything works</td><td class="app-col">Hold a secret combo (below)</td></tr>
+            <tr><th scope="row">Phones, tablets, Linux</th><td class="yes">Works</td><td class="app-col no">Not available</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cta-row">
+        <a id="download-2" class="btn btn-primary" href="#downloads">Download the app</a>
+        <a class="btn btn-ghost" href="play/">Try it in your browser</a>
+      </div>
+    </div>
   </section>
 
-  <section id="steps-windows" class="steps" hidden>
-    <h2>First run on Windows</h2>
-    <ol>
-      <li><b>Run the download.</b> Windows says "Windows protected your PC". Click <b>More info</b>, then <b>Run anyway</b>. BabyBoop isn't signed with a paid certificate, so this is expected.<div class="shot">Screenshot: SmartScreen dialog</div></li>
-      <li><b>Press Start</b> and hand over the keyboard.</li>
-      <li><b>To exit,</b> hold <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> for 2 seconds, or hold <kbd>Esc</kbd> for 5 seconds.</li>
-    </ol>
-    <p class="note"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> always works. Windows doesn't let any app block it.</p>
+  <section id="setup" class="section band">
+    <div class="wrap">
+      <h2>Setup, step by step</h2>
+      <p class="section-lede">BabyBoop is free and isn't signed with a paid Apple or Microsoft certificate, so your computer warns you the first time you open it. That's expected. Here's exactly what you'll see.</p>
+
+      <div class="tabs" role="tablist" aria-label="Choose your computer">
+        <button class="tab" role="tab" id="tab-mac" aria-controls="steps-mac" aria-selected="true" data-os="mac">Mac</button>
+        <button class="tab" role="tab" id="tab-windows" aria-controls="steps-windows" aria-selected="false" data-os="windows">Windows</button>
+      </div>
+
+      <div id="steps-mac" class="panel" role="tabpanel" aria-labelledby="tab-mac">
+        <ol class="steps">
+          <li>
+            <h3>Open the download</h3>
+            <p>Open <code>BabyBoop-macOS.dmg</code> from your Downloads folder. A window shows the BabyBoop icon next to an Applications folder. Drag BabyBoop onto Applications.</p>
+          </li>
+          <li>
+            <h3>Open BabyBoop and get past the warning</h3>
+            <p>Open BabyBoop from Applications. macOS says <q>Apple could not verify "BabyBoop" is free of malware</q>. Click <b>Done</b>.</p>
+            <p>Open <b>System Settings → Privacy &amp; Security</b> and scroll to the bottom. Next to <q>"BabyBoop" was blocked</q>, click <b>Open Anyway</b>, then confirm with your password or Touch ID. You only do this once.</p>
+          </li>
+          <li>
+            <h3>Allow Accessibility</h3>
+            <p>BabyBoop asks for Accessibility access. This is what lets it block system keys and swipes. Click <b>Open Accessibility settings</b>, find BabyBoop in the list and switch it on. BabyBoop notices within a second.</p>
+          </li>
+          <li>
+            <h3>Press Start</h3>
+            <p>The screen fills, the Dock and menu bar hide, and the keyboard belongs to your toddler.</p>
+          </li>
+        </ol>
+        <p class="tip"><b>After an update:</b> macOS forgets the permission. In <b>System Settings → Privacy &amp; Security → Accessibility</b>, select BabyBoop and click <b>−</b>, then click <b>+</b> and add it again.</p>
+      </div>
+
+      <div id="steps-windows" class="panel" role="tabpanel" aria-labelledby="tab-windows" hidden>
+        <ol class="steps">
+          <li>
+            <h3>Run the download</h3>
+            <p>Open <code>BabyBoop-Windows-x64.exe</code> (or <code>-arm64.exe</code>) from your Downloads folder. There's nothing to install. It runs straight away.</p>
+          </li>
+          <li>
+            <h3>Get past SmartScreen</h3>
+            <p>A blue box says <q>Windows protected your PC</q>. Click <b>More info</b>, then <b>Run anyway</b>. You only do this once per download.</p>
+          </li>
+          <li>
+            <h3>Press Start</h3>
+            <p>The screen fills and the keyboard belongs to your toddler.</p>
+          </li>
+        </ol>
+        <p class="tip"><b>Good to know:</b> <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> and <kbd>Win</kbd>+<kbd>L</kbd> always work, because Windows doesn't let any app block them. BabyBoop needs the Microsoft Edge WebView2 Runtime, which comes with Windows 11 and up-to-date Windows 10. If it's missing, BabyBoop tells you where to get it.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="downloads" class="downloads">
-    <h2>All downloads</h2>
-    <ul>
-      <li><a data-asset="mac" href="#">Mac (Intel &amp; Apple silicon), .dmg</a></li>
-      <li><a data-asset="winX64" href="#">Windows (most PCs), .exe</a></li>
-      <li><a data-asset="winArm64" href="#">Windows 11 on ARM (Surface Pro X, Snapdragon laptops), .exe. Not Windows 10 on ARM</a></li>
-      <li><a href="play/">Play in browser</a></li>
-    </ul>
+  <section id="exit" class="section">
+    <div class="wrap">
+      <h2>Getting out again</h2>
+      <p class="section-lede">Toddlers mash keys; they don't hold three of them steady. So exiting takes a long, deliberate hold. A ring fills up on screen while you hold.</p>
+      <div class="exits">
+        <div class="exit">
+          <div class="combo"><kbd class="cap">⌥ Option</kbd><span>+</span><kbd class="cap">Shift</kbd><span>+</span><kbd class="cap">K</kbd></div>
+          <p><b>Hold for 2 seconds.</b> On Windows, use <kbd>Alt</kbd> instead of Option.</p>
+        </div>
+        <div class="exit">
+          <div class="combo"><kbd class="cap cap-wide">Esc</kbd></div>
+          <p><b>Hold for 5 seconds.</b> Same on Mac and Windows.</p>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <section id="downloads" class="section band">
+    <div class="wrap">
+      <h2>Downloads</h2>
+      <div class="dl-grid">
+        <a class="dl" data-asset="mac" href="#">
+          <span class="dl-os">Mac</span>
+          <span class="dl-detail">Apple silicon and Intel · macOS 13 or later</span>
+          <span class="dl-file">BabyBoop-macOS.dmg</span>
+        </a>
+        <a class="dl" data-asset="winX64" href="#">
+          <span class="dl-os">Windows</span>
+          <span class="dl-detail">Most PCs (Intel or AMD) · Windows 10 or 11</span>
+          <span class="dl-file">BabyBoop-Windows-x64.exe</span>
+        </a>
+        <a class="dl" data-asset="winArm64" href="#">
+          <span class="dl-os">Windows on ARM</span>
+          <span class="dl-detail">Surface Pro X, Snapdragon laptops · Windows 11 only</span>
+          <span class="dl-file">BabyBoop-Windows-arm64.exe</span>
+        </a>
+        <a class="dl dl-web" href="play/">
+          <span class="dl-os">Browser</span>
+          <span class="dl-detail">Any device, nothing to install · not locked</span>
+          <span class="dl-file">Play now →</span>
+        </a>
+      </div>
+      <p class="small">Older versions and release notes are on the <a data-repo-path="/releases" href="https://github.com/alok722/babyboop/releases">Releases page</a>.</p>
+    </div>
+  </section>
+
+  <section id="open-source" class="section">
+    <div class="wrap oss">
+      <div>
+        <h2>Open source</h2>
+        <p class="section-lede">BabyBoop is MIT licensed and built in the open. The game is one HTML file. The Mac app is a small Swift wrapper and the Windows app a small .NET one. Read the code, build it yourself, or help make it better.</p>
+      </div>
+      <ul class="oss-links">
+        <li><a data-repo href="https://github.com/alok722/babyboop">Source code on GitHub</a></li>
+        <li><a data-repo-path="/issues/new/choose" href="https://github.com/alok722/babyboop/issues/new/choose">Report a bug or suggest an idea</a></li>
+        <li><a data-repo-path="/blob/main/CONTRIBUTING.md" href="https://github.com/alok722/babyboop/blob/main/CONTRIBUTING.md">Contributing guide</a></li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-  <a id="source" href="#">Source code</a> · MIT licensed
+<footer class="foot">
+  <div class="wrap">BabyBoop · MIT licensed · Made for small hands</div>
 </footer>
 </body>
 </html>
