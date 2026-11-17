@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] - 2026-11-17
+
+### Changed
+
+- The Windows download is less than half the size: about 69 MB for x64 (was 155 MB) and 65 MB for ARM (was 167 MB). It unpacks on launch, so the first start may take a moment longer.
+
+### Known limits
+
+- Windows builds pass CI but haven't been tested on real PCs yet.
+
 ## [0.1.1] - 2026-11-17
 
 ### Fixed
