@@ -1,11 +1,38 @@
-# BabyBoop
+<p align="center">
+  <img src="site/assets/icon-512.png" alt="BabyBoop icon" width="120" height="120">
+</p>
 
-**A free toddler keyboard game for Mac and Windows.** Every key, click and tap makes a big emoji, a happy tone and a burst of confetti, while the computer stays locked so little hands can't wander off.
+<h1 align="center">BabyBoop</h1>
 
-[![CI](https://github.com/alok722/babyboop/actions/workflows/ci.yml/badge.svg)](https://github.com/alok722/babyboop/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-pink.svg)](LICENSE)
+<p align="center">
+  <b>A free, open-source toddler keyboard game for Mac and Windows.</b><br>
+  Every key, click and tap makes a big emoji, a happy tone and a burst of confetti,<br>
+  while the computer stays locked so little hands can't wander off.
+</p>
 
-<!-- Screenshot or GIF goes here: docs/screenshot.png -->
+<p align="center">
+  <a href="https://alok722.github.io/babyboop/"><b>Website</b></a> ·
+  <a href="https://alok722.github.io/babyboop/play/"><b>Try it in your browser</b></a> ·
+  <a href="#download"><b>Download</b></a> ·
+  <a href="#contributing"><b>Contribute</b></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/alok722/babyboop/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/alok722/babyboop/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/alok722/babyboop/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/alok722/babyboop?include_prereleases&label=release&color=ff5a36"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-ff5a36.svg"></a>
+</p>
+
+## Why an app and not just a web page?
+
+You can [play BabyBoop in any browser](https://alok722.github.io/babyboop/play/), but a browser isn't allowed to block system keys. One swipe, <kbd>⌘</kbd>+<kbd>Tab</kbd> or <kbd>⌘</kbd>+<kbd>Q</kbd> and your toddler is in your email. The native app runs the same game full screen and swallows those keys and gestures until a grown-up holds the exit combo.
+
+| | Browser | Mac / Windows app |
+|---|---|---|
+| Install | None | One small download |
+| ⌘Tab / Alt+Tab, Windows key, ⌘Q | Leave or close the game | Blocked |
+| Trackpad swipes, Mission Control, Dock | Work as usual | Blocked |
+| Phones, tablets, Linux | Works | Not available |
 
 ## Download
 
@@ -15,7 +42,7 @@
 | Windows 10/11 (most PCs, Intel/AMD) | [BabyBoop-Windows-x64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-x64.exe) |
 | Windows 11 on ARM (Windows 10 on ARM isn't supported) | [BabyBoop-Windows-arm64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-arm64.exe) |
 
-All versions are on the [Releases](https://github.com/alok722/babyboop/releases) page.
+All versions are on the [Releases](https://github.com/alok722/babyboop/releases) page. The [website](https://alok722.github.io/babyboop/) picks the right file for your computer and has a step-by-step setup guide.
 
 ## Features
 
@@ -59,7 +86,7 @@ BabyBoop needs the Microsoft Edge WebView2 Runtime, which comes with Windows 10 
 - Only the main display is covered.
 - Windows always lets <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> and <kbd>Win</kbd>+<kbd>L</kbd> through; no app can block them.
 - Some Windows touchpad and touchscreen edge gestures may get through. See [apps/windows/TESTING.md](apps/windows/TESTING.md).
-- On a phone, tablet or Linux, use *Play in browser* on the website; keys and gestures can't be fully locked there.
+- On a phone, tablet or Linux, use [Play in browser](https://alok722.github.io/babyboop/play/); keys and gestures can't be locked there.
 
 ## Build from source
 
@@ -90,7 +117,7 @@ Test flags: `--selftest` and `--exit-after N`. The log is `%LOCALAPPDATA%\BabyBo
 
 ```bash
 node --test site/*.test.mjs
-python3 -m http.server -d site 4173
+python3 -m http.server -d site 4173   # open http://localhost:4173
 ```
 
 ### Icons
@@ -105,14 +132,18 @@ scripts/make_icons.sh   # regenerates the macOS .icns, Windows .ico and site ico
 web/index.html          the toy itself (UI, sound, animation), shared by both apps
 apps/macos/             Swift/AppKit app hosting the page in WKWebView
 apps/windows/           .NET 8 WPF app hosting the page in WebView2
-site/                   download website (GitHub Pages)
+site/                   website (GitHub Pages): https://alok722.github.io/babyboop/
 scripts/                icon generation
 .github/workflows/      CI, releases on v* tags, Pages deploy
 ```
 
 ## Contributing
 
-Bug reports, ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Bug reports, ideas and pull requests are welcome.
+
+- Found a bug or a key that escapes the lock? [Open an issue](https://github.com/alok722/babyboop/issues/new/choose).
+- Want to change something? Read [CONTRIBUTING.md](CONTRIBUTING.md) first. It covers bug reports, ground rules and how the page talks to the native apps.
+- The game itself is a single file, [`web/index.html`](web/index.html), so most ideas start there.
 
 ## License
 
