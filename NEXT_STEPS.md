@@ -22,12 +22,14 @@ The Download buttons on the site and in the README point at `releases/latest/dow
 
 Test on a Mac using the DMG from the release, the way a new user would.
 
-- [ ] Open the DMG and drag BabyBoop into Applications.
-- [ ] First open shows "Apple could not verify…". **Open Anyway** in Privacy & Security works.
-- [ ] The permission prompt appears. **Open System Settings** opens Accessibility (called Device Control and Data Access on macOS 27). After switching BabyBoop on, the onboarding panel hides within about 1 second.
-- [ ] Press Start. Letters show their emoji with a tone. ⌘Tab, ⌘Q, ⌘Space, Mission Control, swipes and the Dock do nothing.
-- [ ] Hold ⌥ Option + Shift + K for 2 s: exits. Hold Esc for 5 s: exits.
-- [ ] Self-test: `open -W /Applications/BabyBoop.app --args --selftest`. In `~/Library/Logs/BabyBoop.log` expect `lock on`, then `lock off reason=exit combo` about 5 s after `Esc down (long)`.
+**2026-11-17, v0.1.0 on macOS 27.2.1, Apple silicon:** passed. The log showed `lock on`, system keys and trackpad gestures swallowed while locked, then `lock off reason=exit combo`. Found along the way: macOS 27 renamed the Accessibility list to Device Control and Data Access (wording updated, ships in v0.1.1); the app reports version 1.0 (version stamping fixed, ships in v0.1.1).
+
+- [x] Open the DMG and drag BabyBoop into Applications.
+- [x] First open shows "Apple could not verify…". **Open Anyway** in Privacy & Security works.
+- [x] The permission prompt appears. **Open System Settings** opens Accessibility (called Device Control and Data Access on macOS 27). After switching BabyBoop on, the onboarding panel hides within about 1 second.
+- [x] Press Start. Letters show their emoji with a tone. ⌘Tab, ⌘Q, ⌘Space, Mission Control, swipes and the Dock do nothing.
+- [x] Hold ⌥ Option + Shift + K for 2 s: exits. Hold Esc for 5 s: exits.
+- [ ] Self-test (not run yet): `open -W /Applications/BabyBoop.app --args --selftest`. In `~/Library/Logs/BabyBoop.log` expect `lock on`, then `lock off reason=exit combo` about 5 s after `Esc down (long)`.
 - [ ] If an old BabySmash entry is in that list, remove it.
 
 ## 3. Windows validation (pending, needs a PC)
