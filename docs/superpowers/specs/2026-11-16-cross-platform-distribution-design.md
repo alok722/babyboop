@@ -29,7 +29,7 @@ BabyBoop is a free, open-source toddler "smash the keyboard" app. Any parent who
 
 - Hosting: GitHub Releases for binaries, GitHub Pages for the site.
 - Name: **BabyBoop** (renamed from BabySmash to avoid confusion with Scott Hanselman's BabySmash). Bundle ID `app.babyboop`, log `~/Library/Logs/BabyBoop.log`.
-- Repo: new private repo `github.com/Alok-Raj_JLLT/BabyBoop`, starting from a fresh initial commit. It may go public later; build everything so that needs nothing but a visibility switch (or new remote) and turning on Pages.
+- Repo: `github.com/alok722/babyboop` (originally planned as `Alok-Raj_JLLT/BabyBoop`), starting from a fresh initial commit. It may go public later; build everything so that needs nothing but a visibility switch (or new remote) and turning on Pages.
 - Commits go straight to `main`, no PRs.
 - Unsigned apps, so the site and README must walk users through:
   - macOS Gatekeeper: "Apple could not verify…" → System Settings → Privacy & Security → **Open Anyway** (right-click → Open no longer bypasses it on macOS 15+).
