@@ -38,6 +38,40 @@ jobs:
         shell: pwsh
         run: Get-ChildItem apps/windows/out/*.exe | ForEach-Object { "{0} {1:N1} MB" -f $_.Name, ($_.Length / 1MB) }
 
+  # Rust rewrite of the Windows host (apps/windows-rs). Releases still ship the .NET build
+  # until the Rust one passes apps/windows/TESTING.md on a real PC (see NEXT_STEPS.md).
+  windows-rs:
+    runs-on: windows-latest
+    env:
+      BABYBOOP_VERSION: 0.0.1-ci
+    defaults:
+      run:
+        working-directory: apps/windows-rs
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo fmt --check
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo test --locked
+      - run: ./build.ps1 -Arch x64
+        shell: pwsh
+      - run: ./build.ps1 -Arch arm64
+        shell: pwsh
+      - name: Check stamped version
+        shell: pwsh
+        run: |
+          foreach ($f in Get-ChildItem out/*.exe) {
+            $got = $f.VersionInfo.ProductVersion
+            if ($got -ne $env:BABYBOOP_VERSION) { throw "$($f.Name) says $got, expected $env:BABYBOOP_VERSION" }
+          }
+      - name: Report sizes
+        shell: pwsh
+        run: Get-ChildItem out/*.exe | ForEach-Object { "{0} {1:N1} MB" -f $_.Name, ($_.Length / 1MB) }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BabyBoop-Windows-rust
+          path: apps/windows-rs/out/*.exe
+          retention-days: 30
+
   site:
     runs-on: ubuntu-latest
     steps:
