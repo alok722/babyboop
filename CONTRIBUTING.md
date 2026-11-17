@@ -28,4 +28,4 @@ If a key or gesture escapes the lock, say exactly which one.
 
 ## Releasing
 
-Maintainers update `CHANGELOG.md`, then push a tag `vX.Y.Z`. The release workflow builds the Mac DMG and both Windows executables and publishes the GitHub Release.
+Maintainers add a `## [X.Y.Z]` section to `CHANGELOG.md`, then push a tag `vX.Y.Z`. The release workflow stamps that version into both apps, builds the Mac DMG and both Windows executables, and publishes the GitHub Release with the changelog section as its notes. Don't edit version numbers by hand; the tag is the only place a version lives.
