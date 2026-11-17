@@ -29,7 +29,7 @@ Test on a Mac using the DMG from the release, the way a new user would.
 - [x] The permission prompt appears. **Open System Settings** opens Accessibility (called Device Control and Data Access on macOS 27). After switching BabyBoop on, the onboarding panel hides within about 1 second.
 - [x] Press Start. Letters show their emoji with a tone. ⌘Tab, ⌘Q, ⌘Space, Mission Control, swipes and the Dock do nothing.
 - [x] Hold ⌥ Option + Shift + K for 2 s: exits. Hold Esc for 5 s: exits.
-- [ ] Self-test (not run yet): `open -W /Applications/BabyBoop.app --args --selftest`. In `~/Library/Logs/BabyBoop.log` expect `lock on`, then `lock off reason=exit combo` about 5 s after `Esc down (long)`.
+- [x] Self-test (passed: `lock off` exactly 5 s after `Esc down (long)`, none after the short Esc): `open -W /Applications/BabyBoop.app --args --selftest`. In `~/Library/Logs/BabyBoop.log` expect `lock on`, then `lock off reason=exit combo` about 5 s after `Esc down (long)`.
 - [ ] If an old BabySmash entry is in that list, remove it.
 
 ## 3. Windows validation (pending, needs a PC)
