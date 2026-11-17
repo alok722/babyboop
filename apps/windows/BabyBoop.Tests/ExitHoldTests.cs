@@ -89,4 +89,25 @@ public class ExitHoldTests
         At(3);
         Assert.False(_hold.Triggered);
     }
+
+    [Fact]
+    public void OtherKeyUpDoesNotResetHold()
+    {
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
+        At(2);
+        _hold.KeyUp(KeyMap.VK_K);
+        At(5);
+        Assert.True(_hold.Triggered);
+    }
+
+    [Fact]
+    public void EscDuringKHoldIsIgnored()
+    {
+        _hold.KeyDown(KeyMap.VK_K, true, true);
+        At(1);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, true, true);
+        _hold.KeyUp(KeyMap.VK_ESCAPE);
+        At(2);
+        Assert.True(_hold.Triggered);
+    }
 }
