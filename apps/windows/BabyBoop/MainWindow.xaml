@@ -1,0 +1,8 @@
+<Window x:Class="BabyBoop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="BabyBoop" Icon="Assets/AppIcon.ico" Background="#1b1446"
+        WindowState="Maximized" Width="1200" Height="800">
+    <wv2:WebView2 x:Name="Web" DefaultBackgroundColor="#1b1446" />
+</Window>

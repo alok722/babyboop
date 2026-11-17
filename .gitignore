@@ -1,0 +1,9 @@
+# graft local graph cache
+/graft/
+.DS_Store
+apps/macos/build/
+site/play/
+apps/windows/**/bin/
+apps/windows/**/obj/
+apps/windows/out/
+apps/windows/publish/

@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: apps/macos/build.sh --dmg
+      - run: test "$(lipo -archs apps/macos/build/BabyBoop.app/Contents/MacOS/BabyBoop)" = "x86_64 arm64"
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet test apps/windows/BabyBoop.Tests
+      - run: apps/windows/build.ps1 -Rid win-x64
+        shell: pwsh
+      - run: apps/windows/build.ps1 -Rid win-arm64
+        shell: pwsh
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --test site/*.test.mjs

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BabyBoop</title>
+<meta name="description" content="A free toddler keyboard game for Mac and Windows. Every key makes an emoji, a sound and confetti, while the computer stays locked.">
+<link rel="icon" href="assets/icon-512.png">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="main.js"></script>
+</head>
+<body>
+<header class="hero">
+  <img class="logo" src="assets/icon-512.png" alt="" width="128" height="128">
+  <h1>BabyBoop</h1>
+  <p class="tagline">Every key, click and tap makes a big smiley, a happy sound and a burst of confetti, while your computer stays safely locked.</p>
+
+  <div id="primary" class="cta">
+    <a id="download" class="button" href="#downloads">Download</a>
+    <p id="note" class="note">Free and open source. No account, no ads, no tracking.</p>
+  </div>
+
+  <div id="unsupported" class="cta" hidden>
+    <p class="note">BabyBoop runs on Mac and Windows computers. On this device you can still play in the browser, but keys and gestures can't be fully locked.</p>
+    <a class="button" href="play/">🎈 Play in browser</a>
+  </div>
+</header>
+
+<main>
+  <section class="features">
+    <div><span>🍎</span><h3>Same key, same friend</h3><p>A is always an apple, B a bear. Digits show stars.</p></div>
+    <div><span>🔒</span><h3>Stays locked</h3><p>System keys and gestures are swallowed so little hands can't wander off.</p></div>
+    <div><span>🌙</span><h3>Calm mode</h3><p>Softer sounds, slower animations, fewer things on screen.</p></div>
+    <div><span>🎶</span><h3>Gentle music</h3><p>Quiet nursery melodies and surprise pops when things go quiet.</p></div>
+  </section>
+
+  <section id="steps-mac" class="steps" hidden>
+    <h2>First run on a Mac</h2>
+    <ol>
+      <li><b>Open the download</b> and drag BabyBoop into Applications.<div class="shot">Screenshot: DMG window</div></li>
+      <li><b>Open BabyBoop.</b> macOS says "Apple could not verify BabyBoop". Click <b>Done</b>, then go to <b>System Settings → Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b>. BabyBoop isn't signed with a paid Apple certificate, so this is expected.<div class="shot">Screenshot: Open Anyway button</div></li>
+      <li><b>Allow Accessibility.</b> Click <b>Open Accessibility settings</b> in BabyBoop and turn BabyBoop on. This is what lets it keep little fingers inside the app.<div class="shot">Screenshot: Accessibility list</div></li>
+      <li><b>Press Start</b> and hand over the keyboard.</li>
+      <li><b>To exit,</b> hold <kbd>⌥ Option</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> for 2 seconds, or hold <kbd>Esc</kbd> for 5 seconds.</li>
+    </ol>
+    <p class="note">After updating BabyBoop, remove it from the Accessibility list with − and add it again with +.</p>
+  </section>
+
+  <section id="steps-windows" class="steps" hidden>
+    <h2>First run on Windows</h2>
+    <ol>
+      <li><b>Run the download.</b> Windows says "Windows protected your PC". Click <b>More info</b>, then <b>Run anyway</b>. BabyBoop isn't signed with a paid certificate, so this is expected.<div class="shot">Screenshot: SmartScreen dialog</div></li>
+      <li><b>Press Start</b> and hand over the keyboard.</li>
+      <li><b>To exit,</b> hold <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> for 2 seconds, or hold <kbd>Esc</kbd> for 5 seconds.</li>
+    </ol>
+    <p class="note"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> always works. Windows doesn't let any app block it.</p>
+  </section>
+
+  <section id="downloads" class="downloads">
+    <h2>All downloads</h2>
+    <ul>
+      <li><a data-asset="mac" href="#">Mac (Intel &amp; Apple silicon), .dmg</a></li>
+      <li><a data-asset="winX64" href="#">Windows (most PCs), .exe</a></li>
+      <li><a data-asset="winArm64" href="#">Windows on ARM (Surface Pro X, Snapdragon laptops), .exe</a></li>
+      <li><a href="play/">Play in browser</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <a id="source" href="#">Source code</a> · MIT licensed
+</footer>
+</body>
+</html>
