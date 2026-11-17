@@ -137,6 +137,12 @@ scripts/                icon generation
 .github/workflows/      CI, releases on v* tags, Pages deploy
 ```
 
+## Upcoming
+
+Ideas planned for a future release. Want to help with one? [Open an issue](https://github.com/alok722/babyboop/issues/new/choose) to talk it through first.
+
+- **Nursery rhymes.** Either play your own MP3s from a music folder you choose, or a richer music-box version of the public-domain tunes BabyBoop already hums.
+
 ## Contributing
 
 Bug reports, ideas and pull requests are welcome.
