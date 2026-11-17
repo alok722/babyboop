@@ -83,6 +83,7 @@ BabyBoop needs the Microsoft Edge WebView2 Runtime, which comes with Windows 10 
 
 ## Known limits
 
+- The Windows builds pass CI but haven't been tested on real PCs yet. If something escapes the lock, please [open an issue](https://github.com/alok722/babyboop/issues/new/choose).
 - Only the main display is covered.
 - Windows always lets <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> and <kbd>Win</kbd>+<kbd>L</kbd> through; no app can block them.
 - Some Windows touchpad and touchscreen edge gestures may get through. See [apps/windows/TESTING.md](apps/windows/TESTING.md).
