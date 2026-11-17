@@ -18,7 +18,14 @@ final class LoadDelegate: NSObject, WKNavigationDelegate {
     func webView(_ w: WKWebView, didFinish n: WKNavigation!) {
         log("page loaded")
         startPermissionWatch()
-        if testMode { startLock() }
+        if testMode {
+            guard AXIsProcessTrusted() else {
+                log("test mode quit: Accessibility not granted")
+                NSApp.terminate(nil)
+                return
+            }
+            startLock()
+        }
     }
 }
 
