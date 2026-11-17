@@ -14,6 +14,21 @@ document.querySelectorAll("[data-repo]").forEach(a => { a.href = repoUrl; });
 document.querySelectorAll("[data-repo-path]").forEach(a => { a.href = repoUrl + a.dataset.repoPath; });
 document.querySelectorAll("[data-asset]").forEach(a => { a.href = downloadUrl(ASSETS[a.dataset.asset]); });
 
+// Theme toggle: follows the system until clicked, then remembers the choice
+const themeBtn = document.getElementById("theme");
+const isDark = () => document.documentElement.dataset.theme
+  ? document.documentElement.dataset.theme === "dark"
+  : matchMedia("(prefers-color-scheme: dark)").matches;
+const labelTheme = () => themeBtn.setAttribute("aria-label", `Switch to ${isDark() ? "light" : "dark"} theme`);
+themeBtn.addEventListener("click", () => {
+  const next = isDark() ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("theme", next); } catch {}
+  labelTheme();
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", labelTheme);
+labelTheme();
+
 // Setup tabs
 const tabs = [...document.querySelectorAll(".tab")];
 function showOs(os) {
