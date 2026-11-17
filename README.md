@@ -121,6 +121,14 @@ apps/windows/build.ps1 -Rid win-x64     # or win-arm64; output in apps/windows/o
 
 Test flags: `--selftest` and `--exit-after N`. The log is `%LOCALAPPDATA%\BabyBoop\BabyBoop.log`.
 
+A Rust rewrite in `apps/windows-rs/` will replace the .NET app once it's tested on real PCs. It's a few MB instead of about 65 MB. It needs [Rust](https://rustup.rs) and the Visual Studio C++ Build Tools:
+
+```powershell
+cd apps/windows-rs
+cargo test                 # also runs on macOS and Linux
+./build.ps1 -Arch x64      # or arm64; output in apps/windows-rs/out/
+```
+
 ### Website
 
 ```bash
@@ -139,7 +147,8 @@ scripts/make_icons.sh   # regenerates the macOS .icns, Windows .ico and site ico
 ```
 web/index.html          the toy itself (UI, sound, animation), shared by both apps
 apps/macos/             Swift/AppKit app hosting the page in WKWebView
-apps/windows/           .NET 8 WPF app hosting the page in WebView2
+apps/windows/           .NET 8 WPF app hosting the page in WebView2 (what releases ship today)
+apps/windows-rs/        Rust rewrite of the Windows app, replacing apps/windows/ after hand-testing
 site/                   website (GitHub Pages): https://alok722.github.io/babyboop/
 scripts/                icon generation
 .github/workflows/      CI, releases on v* tags, Pages deploy

@@ -2,6 +2,8 @@
 
 CI only proves the Windows app builds and the core tests pass. Run this list on a real PC before each release, once on **x64** and once on **ARM**.
 
+The same list covers both Windows apps: the .NET one (the release `.exe`) and the Rust one (`apps/windows-rs/out/BabyBoop-Windows-<arch>.exe`). For the Rust app, run the `.exe` from that folder in the commands below.
+
 The log is `%LOCALAPPDATA%\BabyBoop\BabyBoop.log`. Open it with:
 
 ```powershell
