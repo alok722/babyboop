@@ -42,6 +42,8 @@ You can [play BabyBoop in any browser](https://alok722.github.io/babyboop/play/)
 | Windows 10/11 (most PCs, Intel/AMD) | [BabyBoop-Windows-x64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-x64.exe) |
 | Windows 11 on ARM (Windows 10 on ARM isn't supported) | [BabyBoop-Windows-arm64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-arm64.exe) |
 
+**Tested by hand:** v0.1.0 on macOS 27.2.1 (Apple silicon). The Windows builds pass CI but haven't been tried on a real PC yet.
+
 All versions are on the [Releases](https://github.com/alok722/babyboop/releases) page. The [website](https://alok722.github.io/babyboop/) picks the right file for your computer and has a step-by-step setup guide.
 
 ## Features

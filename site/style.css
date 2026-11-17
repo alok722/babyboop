@@ -263,3 +263,5 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .pop { animation: none; }
   .btn, .dl, .key { transition: none; }
 }
+
+.small + .small { margin-top: 8px; }
