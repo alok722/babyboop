@@ -16,8 +16,8 @@
 <script>
   try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
 </script>
-<link rel="stylesheet" href="style.css?v=3">
-<script type="module" src="main.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script type="module" src="main.js?v=5"></script>
 </head>
 <body>
 
@@ -50,6 +50,7 @@
     <div class="stage-wrap">
       <div id="stage" class="stage" aria-label="Demo: press any letter key or tap a key below">
         <p class="stage-hint" id="stage-hint">Press any letter</p>
+        <button id="sound" class="sound-btn" type="button" aria-pressed="true" aria-label="Turn sound off">🔊</button>
       </div>
       <div class="keys" role="group" aria-label="Demo keys">
         <button class="key" data-k="B">B</button>

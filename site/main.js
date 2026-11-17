@@ -85,7 +85,53 @@ const stage = document.getElementById("stage");
 const hint = document.getElementById("stage-hint");
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Sound: the same tones the game plays (web/index.html sound())
+const NOTES = [261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 587.33, 659.25, 783.99, 880.0];
+const soundBtn = document.getElementById("sound");
+let audio, master, muted = false;
+try { muted = localStorage.getItem("sound") === "off"; } catch {}
+function showSound() {
+  soundBtn.setAttribute("aria-pressed", String(!muted));
+  soundBtn.setAttribute("aria-label", muted ? "Turn sound on" : "Turn sound off");
+  soundBtn.textContent = muted ? "🔇" : "🔊";
+}
+soundBtn.addEventListener("click", () => {
+  muted = !muted;
+  try { localStorage.setItem("sound", muted ? "off" : "on"); } catch {}
+  showSound();
+});
+showSound();
+
+function tone(freq, t0, dur, type = "triangle", vol = .25) {
+  const o = audio.createOscillator(), g = audio.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t0);
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(vol, t0 + .01); g.gain.exponentialRampToValueAtTime(.001, t0 + dur);
+  o.connect(g).connect(master); o.start(t0); o.stop(t0 + dur + .05);
+}
+function sound() {
+  if (muted) return;
+  try {
+    if (!audio) {
+      audio = new (window.AudioContext || window.webkitAudioContext)();
+      master = audio.createGain(); master.gain.value = .8; master.connect(audio.destination);
+    }
+    audio.resume();
+  } catch { return; }
+  const t = audio.currentTime, base = NOTES[(Math.random() * NOTES.length) | 0];
+  const kind = (Math.random() * 4) | 0;
+  if (kind === 0) [1, 1.25, 1.5].forEach((m, i) => tone(base * m, t + .05 + i * .08, .4));
+  else if (kind === 1) { tone(base, t + .03, .5, "sine", .3); tone(base * 2, t + .03, .3, "sine", .1); }
+  else if (kind === 2) {
+    const o = audio.createOscillator(), g = audio.createGain(); o.type = "sine";
+    o.frequency.setValueAtTime(base, t); o.frequency.exponentialRampToValueAtTime(base * 2.5, t + .25);
+    g.gain.setValueAtTime(.25, t); g.gain.exponentialRampToValueAtTime(.001, t + .35);
+    o.connect(g).connect(master); o.start(t); o.stop(t + .4);
+  }
+  else [1, 1.5, 2, 1.5].forEach((m, i) => tone(base * m, t + .04 + i * .06, .25, "square", .07));
+}
+
 function boop(letter) {
+  sound();
   hint.style.opacity = "0";
   const r = stage.getBoundingClientRect();
   const x = 15 + Math.random() * 70, y = 25 + Math.random() * 50;
