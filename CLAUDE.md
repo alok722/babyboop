@@ -29,6 +29,7 @@ Toddler keyboard game for macOS and Windows. Both native apps host the same page
 
 - **macOS:**
   - `apps/macos/build.sh --no-install` compile-checks without touching the installed app.
+  - After any local Mac build check (`--no-install`, `--dmg`), run `rm -rf apps/macos/build`. Otherwise Spotlight finds the leftover `BabyBoop.app` and shows two BabyBoop entries next to the installed one.
   - `--dmg` makes the release DMG. `lipo -archs` should print `x86_64 arm64`.
   - Installing changes the ad-hoc signature, so the user must re-add BabyBoop in Accessibility (named "Device Control and Data Access" on macOS 27+). Say so after every install.
   - `--selftest` and `--exit-after N` exercise the lock; check `~/Library/Logs/BabyBoop.log`.
@@ -37,7 +38,7 @@ Toddler keyboard game for macOS and Windows. Both native apps host the same page
   - Compile the app on macOS with `dotnet build apps/windows/BabyBoop -r win-x64 -p:EnableWindowsTargeting=true`.
   - The user hand-tests on real PCs; the checklist is `apps/windows/TESTING.md`.
 - **Site:** run `node --test site/*.test.mjs`.
-- **Browser preview:** add a query string (`?fresh=1`) to force a reload. Pages under `file://` can't be scripted; serve them over http.
+- **Browser preview:** `.claude/launch.json` serves `site/` on port 4173 (the `site` preview). Add a query string (`?fresh=1`) to force a reload. Pages under `file://` can't be scripted; serve them over http.
 
 ## Rules
 
