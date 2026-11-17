@@ -48,9 +48,12 @@ public sealed class InputLock
         Log.Write($"held keys cleared ({why})");
     }
 
+    private string? _hookError;
+
     private bool InstallHooks()
     {
         var ok = false;
+        _hookError = null;
         using var ready = new ManualResetEventSlim();
         _hookThread = new Thread(() =>
         {
@@ -61,6 +64,7 @@ public sealed class InputLock
             _mouseHook = SetWindowsHookEx(WH_MOUSE_LL, _mouseProc, module, 0);
             if (_mouseHook == IntPtr.Zero) Log.Write($"mouse hook FAILED error={Marshal.GetLastWin32Error()}");
             ok = _keyHook != IntPtr.Zero && _mouseHook != IntPtr.Zero;
+            if (!ok) _hookError = string.Join(",", new[] { _keyHook == IntPtr.Zero ? "keyboard" : null, _mouseHook == IntPtr.Zero ? "mouse" : null }.Where(x => x != null));
             ready.Set();
             if (ok) while (GetMessage(out _, IntPtr.Zero, 0, 0) > 0) { }
             if (_keyHook != IntPtr.Zero) UnhookWindowsHookEx(_keyHook);
@@ -108,7 +112,7 @@ public sealed class InputLock
         Locked = true;
         if (!InstallHooks())
         {
-            Stop("no hook");
+            Stop($"no hook ({_hookError})");
             return;
         }
         _timer.Start();
