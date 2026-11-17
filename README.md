@@ -61,11 +61,16 @@ BabyBoop is free and isn't signed with a paid Apple or Microsoft certificate, so
 ### Mac
 
 1. Open `BabyBoop-macOS.dmg` and drag **BabyBoop** into **Applications**.
-2. Open BabyBoop. macOS says *"Apple could not verify BabyBoop"*. Click **Done**, open **System Settings → Privacy & Security**, scroll down and click **Open Anyway**.
-3. BabyBoop asks for **Accessibility** access. Click **Open Accessibility settings** and turn BabyBoop on. This is what lets it block system keys and gestures.
+2. Open BabyBoop. macOS stops it with *"BabyBoop" Not Opened*. Click **Done**, not Move to Trash. Then open **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to *"BabyBoop" was blocked*. Confirm with your password or Touch ID. You only do this once.
+
+   <img src="site/assets/mac-not-opened.png" alt="macOS dialog: “BabyBoop” Not Opened. Apple could not verify “BabyBoop” is free of malware…" width="256">
+
+   **Why the warning?** macOS shows it for any app that hasn't been sent to Apple for checking, which needs a paid Apple developer account. It doesn't mean anything was found. BabyBoop is open source, each release is built by GitHub from this repository's public code ([build logs](https://github.com/alok722/babyboop/actions/workflows/release.yml)), and the app has no network code at all.
+
+3. BabyBoop asks for permission to watch the keyboard. Click **Open System Settings** and switch BabyBoop on. The list is called **Accessibility**, or **Device Control and Data Access** on macOS 27 and later. This is what lets it block system keys and gestures.
 4. Press **Start**.
 
-After updating BabyBoop, macOS forgets the permission. In Accessibility, remove BabyBoop with **−** and add it again with **+**.
+After updating BabyBoop, macOS forgets the permission. In that same list, remove BabyBoop with **−** and add it again with **+**.
 
 ### Windows
 

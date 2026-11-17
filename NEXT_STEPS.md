@@ -24,11 +24,11 @@ Test on a Mac using the DMG from the release, the way a new user would.
 
 - [ ] Open the DMG and drag BabyBoop into Applications.
 - [ ] First open shows "Apple could not verify…". **Open Anyway** in Privacy & Security works.
-- [ ] The Accessibility prompt appears. After switching BabyBoop on, the onboarding panel hides within about 1 second.
+- [ ] The permission prompt appears. **Open System Settings** opens Accessibility (called Device Control and Data Access on macOS 27). After switching BabyBoop on, the onboarding panel hides within about 1 second.
 - [ ] Press Start. Letters show their emoji with a tone. ⌘Tab, ⌘Q, ⌘Space, Mission Control, swipes and the Dock do nothing.
 - [ ] Hold ⌥ Option + Shift + K for 2 s: exits. Hold Esc for 5 s: exits.
 - [ ] Self-test: `open -W /Applications/BabyBoop.app --args --selftest`. In `~/Library/Logs/BabyBoop.log` expect `lock on`, then `lock off reason=exit combo` about 5 s after `Esc down (long)`.
-- [ ] If an old BabySmash entry is in the Accessibility list, remove it.
+- [ ] If an old BabySmash entry is in that list, remove it.
 
 ## 3. Windows validation (pending, needs a PC)
 

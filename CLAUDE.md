@@ -30,7 +30,7 @@ Toddler keyboard game for macOS and Windows. Both native apps host the same page
 - **macOS:**
   - `apps/macos/build.sh --no-install` compile-checks without touching the installed app.
   - `--dmg` makes the release DMG. `lipo -archs` should print `x86_64 arm64`.
-  - Installing changes the ad-hoc signature, so the user must re-add BabyBoop in Accessibility. Say so after every install.
+  - Installing changes the ad-hoc signature, so the user must re-add BabyBoop in Accessibility (named "Device Control and Data Access" on macOS 27+). Say so after every install.
   - `--selftest` and `--exit-after N` exercise the lock; check `~/Library/Logs/BabyBoop.log`.
 - **Windows:**
   - `dotnet test apps/windows/BabyBoop.Tests` runs on macOS too.
