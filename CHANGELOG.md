@@ -6,7 +6,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 
-- A Rust rewrite of the Windows app in `apps/windows-rs/`. It behaves the same and should be a few MB instead of about 65 MB. CI builds and tests it, but releases keep shipping the .NET app until the Rust one passes the hand-test checklist on a real PC.
+- A Rust rewrite of the Windows app in `apps/windows-rs/`. It behaves the same and is about 0.5 MB instead of about 65 MB. CI builds and tests it, but releases keep shipping the .NET app until the Rust one passes the hand-test checklist on a real PC.
 
 ## [0.1.2] - 2026-11-17
 

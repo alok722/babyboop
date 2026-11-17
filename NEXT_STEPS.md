@@ -7,7 +7,7 @@ Only what's still pending. Planned features are in the README under [Upcoming](R
 There are two Windows apps, and nobody has run either on real hardware:
 
 - **.NET** (`apps/windows/`): what releases ship today. About 65–69 MB.
-- **Rust** (`apps/windows-rs/`): a rewrite with the same behavior, expected to be a few MB. CI builds and tests it, but releases don't ship it yet.
+- **Rust** (`apps/windows-rs/`): a rewrite with the same behavior, about 0.5 MB. CI builds and tests it, but releases don't ship it yet.
 
 The plan: test .NET first as the baseline, then Rust with the same checklist. If Rust is at least as good, delete .NET, move Rust into its place and release it.
 

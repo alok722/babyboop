@@ -121,7 +121,7 @@ apps/windows/build.ps1 -Rid win-x64     # or win-arm64; output in apps/windows/o
 
 Test flags: `--selftest` and `--exit-after N`. The log is `%LOCALAPPDATA%\BabyBoop\BabyBoop.log`.
 
-A Rust rewrite in `apps/windows-rs/` will replace the .NET app once it's tested on real PCs. It's a few MB instead of about 65 MB. It needs [Rust](https://rustup.rs) and the Visual Studio C++ Build Tools:
+A Rust rewrite in `apps/windows-rs/` will replace the .NET app once it's tested on real PCs. It's about 0.5 MB instead of about 65 MB. It needs [Rust](https://rustup.rs) and the Visual Studio C++ Build Tools:
 
 ```powershell
 cd apps/windows-rs
