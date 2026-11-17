@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-11-17
+
+### Fixed
+
+- macOS setup screen now names the permission list as macOS 27 does: Device Control and Data Access (Accessibility on earlier versions). The button says Open System Settings.
+- The app's version number now matches the release. v0.1.0 on Mac reported 1.0.
+- In the browser version, the exit hint said Esc 2s; it is Esc 5s.
+
+### Known limits
+
+- Windows builds pass CI but haven't been tested on real PCs yet.
+
 ## [0.1.0] - 2026-11-17
 
 ### Added
