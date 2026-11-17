@@ -14,6 +14,13 @@ for arch in arm64 x86_64; do
 done
 lipo -create build/arm64/BabyBoop build/x86_64/BabyBoop -output "$APP/Contents/MacOS/BabyBoop"
 cp Resources/Info.plist "$APP/Contents/Info.plist"
+if [[ -n "${BABYBOOP_VERSION:-}" ]]; then
+  # macOS wants plain numbers here, so 0.2.0-beta.1 is stamped as 0.2.0
+  v="${BABYBOOP_VERSION%%-*}"
+  [[ "$v" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "bad BABYBOOP_VERSION: $BABYBOOP_VERSION" >&2; exit 2; }
+  plutil -replace CFBundleShortVersionString -string "$v" "$APP/Contents/Info.plist"
+  plutil -replace CFBundleVersion -string "$v" "$APP/Contents/Info.plist"
+fi
 cp ../../web/index.html Resources/AppIcon.icns "$APP/Contents/Resources/"
 codesign --force --sign - --identifier app.babyboop "$APP"
 
