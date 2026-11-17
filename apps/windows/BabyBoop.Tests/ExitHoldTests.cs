@@ -13,7 +13,7 @@ public class ExitHoldTests
     [Fact]
     public void EscHeld5sTriggers()
     {
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(5);
         Assert.True(_hold.Triggered);
     }
@@ -21,7 +21,7 @@ public class ExitHoldTests
     [Fact]
     public void EscHeld4_9sDoesNot()
     {
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(4.9);
         Assert.False(_hold.Triggered);
         Assert.Equal(0.98, _hold.Progress, 3);
@@ -30,11 +30,11 @@ public class ExitHoldTests
     [Fact]
     public void ReleaseResets()
     {
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(1);
         _hold.KeyUp(KeyMap.VK_ESCAPE);
         At(2);
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(6);
         Assert.False(_hold.Triggered);
         At(7);
@@ -44,9 +44,9 @@ public class ExitHoldTests
     [Fact]
     public void AutorepeatDoesNotRestart()
     {
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(3);
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, true);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(5);
         Assert.True(_hold.Triggered);
     }
@@ -54,7 +54,7 @@ public class ExitHoldTests
     [Fact]
     public void KNeedsAltShift()
     {
-        _hold.KeyDown(KeyMap.VK_K, false, true, false);
+        _hold.KeyDown(KeyMap.VK_K, false, true);
         At(3);
         Assert.Equal(0, _hold.Progress);
     }
@@ -62,7 +62,7 @@ public class ExitHoldTests
     [Fact]
     public void AltShiftK2s()
     {
-        _hold.KeyDown(KeyMap.VK_K, true, true, false);
+        _hold.KeyDown(KeyMap.VK_K, true, true);
         At(2);
         Assert.True(_hold.Triggered);
     }
@@ -70,12 +70,12 @@ public class ExitHoldTests
     [Fact]
     public void ResetClearsInProgressHold()
     {
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(5);
         Assert.True(_hold.Triggered);
         _hold.Reset();
         Assert.Equal(0, _hold.Progress);
-        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false, false);
+        _hold.KeyDown(KeyMap.VK_ESCAPE, false, false);
         At(6);
         Assert.False(_hold.Triggered);
     }
@@ -83,7 +83,7 @@ public class ExitHoldTests
     [Fact]
     public void DroppingShiftResetsK()
     {
-        _hold.KeyDown(KeyMap.VK_K, true, true, false);
+        _hold.KeyDown(KeyMap.VK_K, true, true);
         At(1);
         _hold.ModifiersChanged(true, false);
         At(3);

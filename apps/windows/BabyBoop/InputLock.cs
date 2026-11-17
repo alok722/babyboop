@@ -173,7 +173,7 @@ public sealed class InputLock
         if (msg is WM_KEYDOWN or WM_SYSKEYDOWN)
         {
             var repeat = !_down.Add(k.VkCode);
-            _exit.KeyDown((int)k.VkCode, Alt, Shift, repeat);
+            _exit.KeyDown((int)k.VkCode, Alt, Shift);
             if (IsModifier(k.VkCode)) _exit.ModifiersChanged(Alt, Shift);
             else if (!repeat) Input(KeyMap.ToPageKey((int)k.VkCode));
         }

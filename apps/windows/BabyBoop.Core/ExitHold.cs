@@ -14,7 +14,7 @@ public sealed class ExitHold
 
     public ExitHold(Func<DateTime> now) => _now = now;
 
-    public void KeyDown(int vk, bool alt, bool shift, bool isRepeat)
+    public void KeyDown(int vk, bool alt, bool shift)
     {
         if (_start != null) return;
         if (vk == KeyMap.VK_ESCAPE || (vk == KeyMap.VK_K && alt && shift))
