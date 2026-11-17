@@ -34,6 +34,9 @@ jobs:
             $got = $f.VersionInfo.ProductVersion -replace '\+.*$', ''
             if ($got -ne $env:BABYBOOP_VERSION) { throw "$($f.Name) says $got, expected $env:BABYBOOP_VERSION" }
           }
+      - name: Report sizes
+        shell: pwsh
+        run: Get-ChildItem apps/windows/out/*.exe | ForEach-Object { "{0} {1:N1} MB" -f $_.Name, ($_.Length / 1MB) }
 
   site:
     runs-on: ubuntu-latest
