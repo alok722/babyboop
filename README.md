@@ -12,8 +12,8 @@
 | Platform | Download |
 |---|---|
 | Mac (Intel & Apple silicon, macOS 13+) | [BabyBoop-macOS.dmg](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-macOS.dmg) |
-| Windows 10/11 (most PCs) | [BabyBoop-Windows-x64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-x64.exe) |
-| Windows on ARM | [BabyBoop-Windows-arm64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-arm64.exe) |
+| Windows 10/11 (most PCs, Intel/AMD) | [BabyBoop-Windows-x64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-x64.exe) |
+| Windows 11 on ARM (Windows 10 on ARM isn't supported) | [BabyBoop-Windows-arm64.exe](https://github.com/alok722/babyboop/releases/latest/download/BabyBoop-Windows-arm64.exe) |
 
 All versions are on the [Releases](https://github.com/alok722/babyboop/releases) page.
 
