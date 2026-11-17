@@ -9,7 +9,13 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Version from tag
+        run: echo "BABYBOOP_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
       - run: apps/macos/build.sh --dmg
+      - name: Check stamped version
+        run: |
+          got=$(plutil -extract CFBundleShortVersionString raw apps/macos/build/BabyBoop.app/Contents/Info.plist)
+          test "$got" = "${BABYBOOP_VERSION%%-*}" || { echo "app says $got, tag says $BABYBOOP_VERSION"; exit 1; }
       - uses: actions/upload-artifact@v4
         with:
           name: macos
@@ -22,11 +28,21 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+      - name: Version from tag
+        shell: bash
+        run: echo "BABYBOOP_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
       - run: dotnet test apps/windows/BabyBoop.Tests
       - run: apps/windows/build.ps1 -Rid win-x64
         shell: pwsh
       - run: apps/windows/build.ps1 -Rid win-arm64
         shell: pwsh
+      - name: Check stamped version
+        shell: pwsh
+        run: |
+          foreach ($f in Get-ChildItem apps/windows/out/*.exe) {
+            $got = $f.VersionInfo.ProductVersion -replace '\+.*$', ''
+            if ($got -ne $env:BABYBOOP_VERSION) { throw "$($f.Name) says $got, tag says $env:BABYBOOP_VERSION" }
+          }
       - uses: actions/upload-artifact@v4
         with:
           name: windows
