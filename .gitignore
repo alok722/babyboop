@@ -7,3 +7,6 @@ apps/windows/**/bin/
 apps/windows/**/obj/
 apps/windows/out/
 apps/windows/publish/
+
+# per-person Claude Code settings; .claude/launch.json is shared
+.claude/settings.local.json
