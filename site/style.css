@@ -193,22 +193,31 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .panel { margin-top: 28px; }
 .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: 14px; }
-.steps li {
+.steps > li {
   counter-increment: step; position: relative; display: flex; flex-direction: column; gap: 8px;
   padding: 22px 24px 22px 80px; background: var(--surface); border-radius: var(--r); border: 1px solid var(--line);
 }
-.steps li::before {
+.steps > li::before {
   content: counter(step); position: absolute; left: 22px; top: 20px; width: 40px; height: 40px;
   display: grid; place-items: center; border-radius: 12px; font: 700 20px var(--font-display);
   background: var(--sun); color: #3a2a00;
 }
 .steps p { color: var(--muted); max-width: 46em; }
 .steps b { color: var(--ink); }
+.steps h4 { font: 600 16px var(--font-display); margin: 0 0 6px; color: var(--ink); }
+.shot { margin: 4px 0; display: flex; flex-direction: column; gap: 8px; max-width: 520px; }
+.shot-narrow { max-width: 280px; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 12px 30px -18px color-mix(in srgb, var(--ink) 60%, transparent); }
+.shot figcaption { font-size: 14px; color: var(--muted); }
+.why { margin-top: 4px; padding: 16px 18px; border-radius: 14px; background: color-mix(in srgb, var(--sun) 14%, var(--surface)); border: 1px solid color-mix(in srgb, var(--sun) 45%, var(--line)); max-width: 46em; }
+.why ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.why li, .why p { color: var(--muted); font-size: 15px; }
+.why b { color: var(--ink); }
 .tip { margin-top: 20px; padding: 16px 20px; border-left: 4px solid var(--sun); background: var(--surface); border-radius: 0 12px 12px 0; color: var(--muted); max-width: 52em; }
 .tip b { color: var(--ink); }
 @media (max-width: 520px) {
-  .steps li { padding: 70px 18px 20px; }
-  .steps li::before { left: 18px; top: 18px; }
+  .steps > li { padding: 70px 18px 20px; }
+  .steps > li::before { left: 18px; top: 18px; }
 }
 
 /* exit */

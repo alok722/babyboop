@@ -16,8 +16,8 @@
 <script>
   try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
 </script>
-<link rel="stylesheet" href="style.css?v=6">
-<script type="module" src="main.js?v=6"></script>
+<link rel="stylesheet" href="style.css?v=8">
+<script type="module" src="main.js?v=7"></script>
 </head>
 <body>
 
@@ -137,19 +137,40 @@
           </li>
           <li>
             <h3>Open BabyBoop and get past the warning</h3>
-            <p>Open BabyBoop from Applications. macOS says <q>Apple could not verify "BabyBoop" is free of malware</q>. Click <b>Done</b>.</p>
-            <p>Open <b>System Settings → Privacy &amp; Security</b> and scroll to the bottom. Next to <q>"BabyBoop" was blocked</q>, click <b>Open Anyway</b>, then confirm with your password or Touch ID. You only do this once.</p>
+            <p>Open BabyBoop from Applications. macOS stops it with <q>"BabyBoop" Not Opened</q>. Click <b>Done</b>, not Move to Trash.</p>
+            <figure class="shot shot-narrow">
+              <img src="assets/mac-not-opened.png" width="256" height="300" loading="lazy" alt="macOS dialog titled “BabyBoop” Not Opened, saying Apple could not verify BabyBoop is free of malware, with Move to Trash and Done buttons">
+              <figcaption>What you'll see the first time. Click <b>Done</b>.</figcaption>
+            </figure>
+            <p>Now open <b>System Settings → Privacy &amp; Security</b> and scroll to the bottom. Next to <q>"BabyBoop" was blocked to protect your Mac</q>, click <b>Open Anyway</b>. Confirm with your password or Touch ID, then click <b>Open Anyway</b> once more. You only do this once. On recent macOS, right-click → Open no longer skips this step.</p>
+            <div class="why">
+              <h4>Why does macOS say this?</h4>
+              <ul>
+                <li><b>It means "not checked by Apple", not "something bad was found".</b> macOS shows this for any app whose developer hasn't joined Apple's paid developer program and sent the build to Apple for scanning. BabyBoop is a free hobby project, so it hasn't been.</li>
+                <li><b>You can read every line.</b> BabyBoop is open source. The game is one HTML file and the Mac app is about 250 lines of Swift, all on <a data-repo href="https://github.com/alok722/babyboop">GitHub</a>.</li>
+                <li><b>Built in public, not on someone's laptop.</b> Each release is built by GitHub from that public code, and the <a data-repo-path="/actions/workflows/release.yml" href="https://github.com/alok722/babyboop/actions/workflows/release.yml">build logs</a> are public too.</li>
+                <li><b>Nothing leaves your Mac.</b> BabyBoop has no network code at all. No account, no analytics, no ads.</li>
+              </ul>
+            </div>
           </li>
           <li>
-            <h3>Allow Accessibility</h3>
-            <p>BabyBoop asks for Accessibility access. This is what lets it block system keys and swipes. Click <b>Open Accessibility settings</b>, find BabyBoop in the list and switch it on. BabyBoop notices within a second.</p>
+            <h3>Let BabyBoop watch the keyboard</h3>
+            <p>BabyBoop asks for one permission. Click <b>Open System Settings</b> and switch BabyBoop on. The list is called <b>Accessibility</b>, or <b>Device Control and Data Access</b> on macOS 27 and later. BabyBoop notices within a second.</p>
+            <figure class="shot">
+              <img src="assets/mac-device-control.png" width="506" height="205" loading="lazy" alt="System Settings page titled Device Control and Data Access, with BabyBoop switched on">
+              <figcaption>macOS 27 calls this list Device Control and Data Access.</figcaption>
+            </figure>
+            <div class="why">
+              <h4>Why does it need this?</h4>
+              <p>macOS's description lists everything an app with this access <em>could</em> do. BabyBoop uses it for one thing: catching keys and swipes while the game is running, so ⌘Tab, ⌘Q or a trackpad swipe can't take your toddler somewhere else. When you exit, it stops listening.</p>
+            </div>
           </li>
           <li>
             <h3>Press Start</h3>
             <p>The screen fills, the Dock and menu bar hide, and the keyboard belongs to your toddler.</p>
           </li>
         </ol>
-        <p class="tip"><b>After an update:</b> macOS forgets the permission. In <b>System Settings → Privacy &amp; Security → Accessibility</b>, select BabyBoop and click <b>−</b>, then click <b>+</b> and add it again.</p>
+        <p class="tip"><b>After an update:</b> macOS forgets the permission. In <b>System Settings → Privacy &amp; Security → Accessibility</b> (Device Control and Data Access on macOS 27), select BabyBoop and click <b>−</b>, then click <b>+</b> and add it again.</p>
       </div>
 
       <div id="steps-windows" class="panel" role="tabpanel" aria-labelledby="tab-windows" hidden>
@@ -161,6 +182,10 @@
           <li>
             <h3>Get past SmartScreen</h3>
             <p>A blue box says <q>Windows protected your PC</q>. Click <b>More info</b>, then <b>Run anyway</b>. You only do this once per download.</p>
+            <div class="why">
+              <h4>Why does Windows say this?</h4>
+              <p>SmartScreen warns about any app that isn't signed with a paid certificate and hasn't been downloaded by many people yet. It doesn't mean anything was found. BabyBoop is open source, each release is built by GitHub from the public code, and it has no network code of its own.</p>
+            </div>
           </li>
           <li>
             <h3>Press Start</h3>
